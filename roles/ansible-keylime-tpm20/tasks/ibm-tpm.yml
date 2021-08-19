@@ -20,10 +20,16 @@
   command: install -c /root/keylime/scripts/init_tpm_server /usr/local/bin/init_tpm_server
 
 - name: Install tpm_serverd script
-  command: install -c /root/keylime/scripts/tpm_serverd /usr/local/bin/tpm_serverd
+#  command: install -c /root/keylime/scripts/tpm_serverd /usr/local/bin/tpm_serverd
+  copy:
+    src: files/tpm_serverd
+    dest: /usr/local/bin/tpm_serverd
+    owner: root
+    group: root
+    mode: '0755'
 
-- name: Changing perm of "tpm_serverd", adding "+x"
-  file: dest=/usr/local/bin/tpm_serverd mode=a+x
+#- name: Changing perm of "tpm_serverd", adding "+x"
+#  file: dest=/usr/local/bin/tpm_serverd mode=a+x
 
 - name: Changing perm of "init_tpm_server", adding "+x"
   file: dest=/usr/local/bin/init_tpm_server mode=a+x
@@ -47,26 +53,10 @@
     enabled: yes
     masked: no
 
-- name: Create a systemd drop-in directory for tpm2-abrmd
-  file:
-    dest: /etc/systemd/system/tpm2-abrmd.service.d/
-    state: directory
-    mode: '0755'
-    owner: root
-    group: root
-
 - name: Change TCTI to emulator in tpm2-abrmd unit
   copy:
-    src: files/tpm2-abrmd.service.d/10-tcti-emulator.conf
-    dest: /etc/systemd/system/tpm2-abrmd.service.d/
-    owner: root
-    group: root
-    mode: '0644'
-
-- name: Remove ConditionPathExistsGlob from tpm2-abrmd unit
-  copy:
-    src: files/tpm2-abrmd.service.d/20-remove-conditionpathexistsglob.conf
-    dest: /etc/systemd/system/tpm2-abrmd.service.d/
+    src: files/tpm2-abrmd.service
+    dest: /etc/systemd/system/tpm2-abrmd.service
     owner: root
     group: root
     mode: '0644'

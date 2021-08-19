@@ -1,0 +1,16 @@
+Unit]
+Description=TPM2 Access Broker and Resource Management Daemon
+# These settings are needed when using the device TCTI. If the
+# TCP mssim is used then the settings should be commented out.
+#After=dev-tpm0.device
+#Requires=dev-tpm0.device
+ConditionPathExistsGlob=
+
+[Service]
+Type=dbus
+BusName=com.intel.tss2.Tabrmd
+ExecStart=/usr/sbin/tpm2-abrmd --tcti=mssim
+User=tss
+
+[Install]
+WantedBy=multi-user.target
