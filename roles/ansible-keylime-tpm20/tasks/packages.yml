@@ -18,7 +18,6 @@
         - libgcrypt-devel
         - dbus-devel
         - glib2-devel
-        - compat-openssl10-devel
         - libcurl-devel
         - python3-pip
         - python3-pyyaml
