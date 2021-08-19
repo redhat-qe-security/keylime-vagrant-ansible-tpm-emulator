@@ -40,8 +40,7 @@
     TPM2TOOLS_TCTI: "tabrmd:bus_name=com.intel.tss2.Tabrmd"
 
 - name: Ensure tpm_server is not running
-  command: pkill tpm_server
-  ignore_errors: yes
+  command: bash -c 'pgrep tpm_server && pkill tpm_server'
 
 - name: Start TPM Emulator
   command: /usr/local/bin/tpm_serverd
