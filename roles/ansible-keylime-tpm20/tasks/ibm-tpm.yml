@@ -9,6 +9,9 @@
     dest: /root/ibmtpm
     remote_src: yes
 
+- name: remove -Werror compile flag
+  command: sed -i 's/-Werror//g' /root/ibmtpm/src/makefile /root/ibmtpm/src/makefile11
+
 - name: Compile tpm emulator
   make:
       chdir: /root/ibmtpm/src/
@@ -45,6 +48,7 @@
 - name: Start TPM Emulator
   command: /usr/local/bin/tpm_serverd
   become: yes
+#  debugger: always
 
 - name: Enable tpm2_abrmd service and ensure it is not masked
   systemd:

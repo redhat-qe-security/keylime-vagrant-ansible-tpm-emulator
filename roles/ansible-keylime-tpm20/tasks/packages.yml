@@ -14,26 +14,26 @@
         - libstdc++-devel
         - gcc
         - pkg-config
-        - uriparser-devel
+#        - uriparser-devel
         - libgcrypt-devel
         - dbus-devel
         - glib2-devel
         - libcurl-devel
         - python3-pip
         - python3-pyyaml
-        - python3-m2crypto
-        - python3-tornado
-        - python3-simplejson
+#       - python3-m2crypto
+#       - python3-tornado
+#       - python3-simplejson
         - python3-requests
-        - python3-sqlalchemy
-        - python3-alembic
+#       - python3-sqlalchemy
+#       - python3-alembic
         - python3-packaging
         - python3-psutil
         - libselinux-python3
-        - yaml-cpp-devel
+#        - yaml-cpp-devel
         - procps-ng
         - tpm2-tss
         - tpm2-tools
         - tpm2-abrmd
-        - python3-zmq
+#       - python3-zmq
       state: latest
