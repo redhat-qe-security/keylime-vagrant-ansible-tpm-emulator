@@ -36,4 +36,5 @@
         - tpm2-tools
         - tpm2-abrmd
 #       - python3-zmq
+        - openssl-devel
       state: latest
